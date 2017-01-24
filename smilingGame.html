@@ -24,25 +24,31 @@
 
 			var numberOfFaces=5;
 			var theLeftSide=document.getElementById(leftSide);
-			
+			var theRightSide=document.getElementById(rightSide);
 
 		
 			for (var i = 0; i < numberOfFaces; i++) {
 				
-				var smiley=document.createElement("img");	
-				var top=Math.random()*400;
-				top=Math.floor(top);
-				console.log(top);
-				var left=Math.random()*400;
-				left=Math.floor(left);
-				console.log(left);
-				smiley.style.top="top";
-				smiley.style.left="left";
+				var smiley=document.createElement("img");
 				smiley.setAttribute("src","smile.png");
-				theLeftSide.appendChild(smiley);
+				var top=Math.random()*400;
+				topSpace=Math.floor(top)+"px";
+				console.log(topSpace);
+				var left=Math.random()*400;
+				leftSpace=Math.floor(left)+"px";
+				console.log(leftSpace);
+				smiley.style.top=topSpace;
+				smiley.style.left=leftSpace;
+				theLeftSide=leftSide.appendChild(smiley);
+
 				
 			}
+			var leftSideImages=theLeftSide.cloneNode(true);
+			var rightSideImages=leftSideImages.removeChild(leftSideImages);
+			rightSide.appendChild(rightSideImages);
 		}
+
+
 	</script>
 	<h2>Matching Game</h2>
 	<p>Click on the extra smiling face on the left.</p>
