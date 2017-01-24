@@ -23,8 +23,8 @@
 		function generateFaces(){
 
 			var numberOfFaces=5;
-			var theLeftSide=document.getElementById(leftSide);
-			var theRightSide=document.getElementById(rightSide);
+			var theLeftSide=document.getElementById("leftSide");
+			var theRightSide=document.getElementById("rightSide");
 
 		
 			for (var i = 0; i < numberOfFaces; i++) {
@@ -39,13 +39,21 @@
 				console.log(leftSpace);
 				smiley.style.top=topSpace;
 				smiley.style.left=leftSpace;
-				theLeftSide=leftSide.appendChild(smiley);
+				leftSide.appendChild(smiley);
 
-				
+							
 			}
-			var leftSideImages=theLeftSide.cloneNode(true);
-			var rightSideImages=leftSideImages.removeChild(leftSideImages);
-			rightSide.appendChild(rightSideImages);
+
+			theRightSide=theLeftSide.cloneNode(true);
+			console.log(theRightSide);
+			var toRemove=document.getElementById("leftSide").lastChild;
+			console.log(toRemove);
+			var leftSideImages=document.getElementById("leftSide").removeChild(toRemove);
+			console.log(leftSideImages);
+			leftSide.appendChild(theRightSide);
+			rightSide.appendChild(theRightSide);
+			
+			
 		}
 
 
