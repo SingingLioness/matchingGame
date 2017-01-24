@@ -25,6 +25,7 @@
 			var numberOfFaces=5;
 			var theLeftSide=document.getElementById("leftSide");
 			var theRightSide=document.getElementById("rightSide");
+			var theBody=document.getElementsByTagName("body")[0];
 
 		
 			for (var i = 0; i < numberOfFaces; i++) {
@@ -44,14 +45,27 @@
 							
 			}
 
-			theRightSide=theLeftSide.cloneNode(true);
-			console.log(theRightSide);
+			leftSideImages=theLeftSide.cloneNode(true);
+			
+			//console.log(theRightSide);
 			var toRemove=document.getElementById("leftSide").lastChild;
-			console.log(toRemove);
-			var leftSideImages=document.getElementById("leftSide").removeChild(toRemove);
-			console.log(leftSideImages);
-			leftSide.appendChild(theRightSide);
-			rightSide.appendChild(theRightSide);
+			//console.log(toRemove);
+			leftSideImages=document.getElementById("leftSide").removeChild(toRemove);
+			//console.log(leftSideImages);
+			document.getElementById('rightSide').innerHTML=document.getElementById('leftSide').innerHTML;
+			leftSide.appendChild(leftSideImages);
+
+			theLeftSide.lastChild.onclick=function nextLevel(event){
+				event.stopPropagation();
+				numberOfFaces+=5;
+				generateFaces();
+			}
+
+			theBody.onclick=function gameOver(){
+				alert("Game Over!");
+				theBody.onclick=null;
+				theLeftSide.lastChild.onclick=null;
+			}
 			
 			
 		}
